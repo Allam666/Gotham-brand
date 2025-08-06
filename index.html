@@ -3,13 +3,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GOTHAM Brand</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Black+Ops+One&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }body {
+    }html {
+  scroll-behavior: smooth;
+}
+
+body {
   font-family: 'Orbitron', sans-serif;
   background: #0f0f0f;
   color: white;
@@ -28,18 +32,20 @@ header {
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   color: #e50914;
   letter-spacing: 2px;
   display: flex;
   align-items: center;
+  font-family: 'Black Ops One', cursive;
 }
 
 header h1::before {
-  content: "\f6e2";
+  content: "\f186";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
-  margin-right: 0.5rem;
+  margin-right: 0.7rem;
+  font-size: 2rem;
 }
 
 nav a {
@@ -54,7 +60,7 @@ nav a:hover {
 }
 
 .hero {
-  background: url('https://i.ibb.co/F5jvyWp/batman-city-bg.jpg') no-repeat center center/cover;
+  background: url('https://i.ibb.co/VVZw7Zc/batman-dark-city.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -72,7 +78,7 @@ nav a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
 
@@ -126,7 +132,7 @@ nav a:hover {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
 }
 
@@ -135,6 +141,7 @@ nav a:hover {
   border-radius: 8px;
   padding: 1rem;
   transition: transform 0.3s;
+  cursor: pointer;
 }
 
 .product img {
@@ -150,6 +157,38 @@ nav a:hover {
 
 .product:hover {
   transform: scale(1.05);
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+}
+
+.popup.active {
+  display: block;
+}
+
+.popup img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 footer {
@@ -185,35 +224,56 @@ footer .social a:hover {
     <a href="#products" class="btn">Explore Collection</a>
   </section>  <section class="products" id="products">
     <h3>Featured Products</h3>
-    <div class="product-grid">
-      <!-- AUTO GENERATED PRODUCTS -->
-      <!-- 36 items -->
-      <!-- Use https://source.unsplash.com/ or other placeholders -->
-      <!-- Example -->
-      <script>
-        const products = [
-          { name: "Dark Knight Tee", price: "1000 جنيه", img: "https://source.unsplash.com/random/300x300?black,shirt" },
-          { name: "Gotham City Hoodie", price: "1200 جنيه", img: "https://source.unsplash.com/random/300x301?hoodie,dark" },
-          { name: "Shadow Cap", price: "700 جنيه", img: "https://source.unsplash.com/random/300x302?cap,black" },
-        ];for (let i = 0; i < 36; i++) {
-      const p = products[i % products.length];
-      document.write(`
-        <div class="product">
-          <img src="${p.img}" alt="${p.name}" />
-          <h4>${p.name}</h4>
-          <p>${p.price}</p>
-        </div>
-      `);
-    }
-  </script>
-</div>
-
-  </section>  <footer>
+    <div class="product-grid" id="productGrid"></div>
+  </section>  <div class="popup" id="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <img id="popupImg" src="" alt="Product" />
+    <h4 id="popupName"></h4>
+    <p id="popupPrice"></p>
+  </div>  <footer>
     <p>&copy; 2025 GOTHAM. All rights reserved.</p>
     <div class="social">
       <a href="https://instagram.com/Mahmoud_allam666" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-facebook"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
-  </footer>
-</body></html>
+  </footer>  <script>
+    const productGrid = document.getElementById("productGrid");
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popupImg");
+    const popupName = document.getElementById("popupName");
+    const popupPrice = document.getElementById("popupPrice");
+
+    const products = [
+      { name: "Dark Knight Tee", price: "1000 جنيه", img: "https://i.ibb.co/Zc4w7Wr/tshirt1.jpg" },
+      { name: "Gotham Shadows Tee", price: "950 جنيه", img: "https://i.ibb.co/yV5nt7M/tshirt2.jpg" },
+      { name: "Nocturne Hoodie", price: "1200 جنيه", img: "https://i.ibb.co/X23KFL1/hoodie1.jpg" },
+      { name: "Urban Bat Hoodie", price: "1300 جنيه", img: "https://i.ibb.co/51YVf9d/hoodie2.jpg" },
+      { name: "Blackout Cap", price: "700 جنيه", img: "https://i.ibb.co/yFrtMyS/cap1.jpg" },
+      { name: "Shadow Wings Cap", price: "750 جنيه", img: "https://i.ibb.co/T4krs2B/cap2.jpg" },
+    ];
+
+    for (let i = 0; i < 30; i++) {
+      const p = products[i % products.length];
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <img src="${p.img}" alt="${p.name}" />
+        <h4>${p.name}</h4>
+        <p>${p.price}</p>
+      `;
+      div.onclick = () => openPopup(p);
+      productGrid.appendChild(div);
+    }
+
+    function openPopup(p) {
+      popupImg.src = p.img;
+      popupName.innerText = p.name;
+      popupPrice.innerText = p.price;
+      popup.classList.add("active");
+    }
+
+    function closePopup() {
+      popup.classList.remove("active");
+    }
+  </script></body></html>
