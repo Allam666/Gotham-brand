@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 50px 20px;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.shop-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e50914;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.shop-btn:hover {
+    background-color: #b00610;
+}
