@@ -4,14 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gotham Brand</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to bottom, #000000, #1f1f1f);
+        color: white;
+        font-family: 'Arial', sans-serif;
+      }
+      .hero-text {
+        text-shadow: 2px 2px 10px orange;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <img src="images/logo.png" alt="Gotham Logo" class="logo" />
-      <h1>GOTHAM</h1>
-      <p>Streetwear inspired by the shadows.</p>
-      <a href="products.html" class="btn">Shop Now</a>
+    <header class="text-center py-10">
+      <h1 class="text-5xl font-bold text-orange-500 hero-text">GOTHAM</h1>
+      <p class="text-lg text-gray-300 mt-2">Dark Streetwear Brand</p>
     </header>
+
+    <main class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 pb-12">
+      <div class="bg-white text-black rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://via.placeholder.com/400x400?text=T-Shirt" alt="T-Shirt" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">Gotham T-Shirt</h2>
+          <p class="text-gray-700 mt-1">$29.99</p>
+        </div>
+      </div>
+
+      <div class="bg-white text-black rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://via.placeholder.com/400x400?text=Hoodie" alt="Hoodie" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">Gotham Hoodie</h2>
+          <p class="text-gray-700 mt-1">$49.99</p>
+        </div>
+      </div>
+
+      <div class="bg-white text-black rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://via.placeholder.com/400x400?text=Cap" alt="Cap" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">Gotham Cap</h2>
+          <p class="text-gray-700 mt-1">$19.99</p>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
